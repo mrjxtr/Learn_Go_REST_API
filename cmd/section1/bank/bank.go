@@ -10,7 +10,7 @@ import (
 func main() {
 	fmt.Printf("WELCOME TO THE BANK!\n\n")
 
-	const balanceFile = "./cmd/msc/bank/balance.txt"
+	const balanceFile = "./cmd/section1/bank/balance.txt"
 	balance, err := readBalanceFromFile(balanceFile)
 	if err != nil {
 		fmt.Print("ERROR:")

@@ -59,14 +59,14 @@ func getUserInput(infoText string) (float64, error) {
 
 func storeResult(data float64, filename string) {
 	byteData := fmt.Sprintf("%.2f", data)
-	filePath := fmt.Sprintf("./cmd/msc/profit/%s.txt", filename)
+	filePath := fmt.Sprintf("./cmd/section1/profit/%s.txt", filename)
 
 	os.WriteFile(filePath, []byte(byteData), 0644)
 }
 
 func storeResults(ebt, profit, ratio float64) {
 	byteData := fmt.Sprintf("EBT: %.2f\nPROFIT: %.2f\nRATION: %.2f", ebt, profit, ratio)
-	filePath := "./cmd/msc/profit/results.txt"
+	filePath := "./cmd/section1/profit/results.txt"
 
 	os.WriteFile(filePath, []byte(byteData), 0644)
 }
