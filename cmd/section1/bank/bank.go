@@ -54,6 +54,7 @@ func main() {
 			fmt.Println("Invalid choice. Please try again.")
 		}
 
+		// i: This is an alternative to the code above
 		// if choice == 1 {
 		// 	fmt.Printf("Your balance is: %.2f\n\n", balance)
 		// } else if choice == 2 {
