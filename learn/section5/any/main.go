@@ -34,7 +34,7 @@ func printSomething(data any) {
 		fmt.Println("This is a string:", data)
 	}
 
-	// i: alternatives if you want a to do something with a specifig type
+	// i: alternatives if you want a to do something specific with a specific type
 
 	// intVal, ok := data.(int)
 	// if ok {
