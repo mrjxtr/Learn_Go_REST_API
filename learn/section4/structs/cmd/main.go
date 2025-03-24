@@ -17,6 +17,18 @@ func main() {
 		panic(fmt.Sprintf("Error while creating a new user: %s", err))
 	}
 
+	appAdmin, err := user.NewAdmin(
+		firstName,
+		lastName,
+		birthDate,
+		age,
+		"example@admin.com", // Example admin email and password
+		"examplepassword",
+	)
+	if err != nil {
+		panic(fmt.Sprintf("Error while creating a new admin: %s", err))
+	}
+
 	// i: Using this method is longer
 	// firstName := utils.GetUserData("Enter your first name: ")
 	// lastName := utils.GetUserData("Enter your last name: ")
@@ -39,7 +51,11 @@ func main() {
 
 	// Do something with the data...
 
+	fmt.Printf("\nUser Details")
 	appUser.OutputUserDetails() // First output
-	appUser.ClearUserName()
-	appUser.OutputUserDetails() // Second output after clearing name
+	// appUser.ClearUserName()
+	// appUser.OutputUserDetails() // Second output after clearing name
+
+	fmt.Printf("\nAdmin Details:")
+	appAdmin.OutputUserDetails() // Third output for admin
 }
