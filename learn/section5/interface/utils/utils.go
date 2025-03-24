@@ -8,14 +8,17 @@ import (
 	"strings"
 )
 
+// Saver defines a type that can be saved.
 type Saver interface {
 	Save() error
 }
 
+// Outputer defines a type that can produce output.
 type Outputer interface {
 	Output()
 }
 
+// Output combines Saver and Outputer interfaces.
 type Output interface {
 	Saver
 	Outputer
@@ -61,6 +64,7 @@ func SaveData(data Saver) error {
 	return nil
 }
 
+// A generic way of outputting notes or todos using the Output interface
 func OutputData(data Output) error {
 	data.Output()
 	return SaveData(data)
