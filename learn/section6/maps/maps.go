@@ -12,7 +12,7 @@ func (m floatMap) output() {
 	fmt.Println(m)
 }
 
-func makeMaps() {
+func makeMaps() floatMap {
 	courseRatings := make(floatMap, 2) // only one addition parameter
 	fmt.Println(courseRatings)
 
@@ -21,11 +21,18 @@ func makeMaps() {
 
 	// fmt.Println(courseRatings)
 	courseRatings.output() // using custom methods on type aliases
+
+	return courseRatings
 }
 
 func main() {
 	exit := true
-	makeMaps()
+	courseRatings := makeMaps()
+
+	for k, v := range courseRatings {
+		// do something per iteration
+		fmt.Printf("key: %v, val: %v\n", k, v)
+	}
 
 	if exit {
 		fmt.Printf("\nexiting early\n")

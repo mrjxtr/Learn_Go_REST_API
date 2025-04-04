@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func makeArrays() {
+func makeArrays() []string {
 	// Use this if you know in advance how much you will add to the array
 	userNames := make([]string, 2, 6) // creates a slice with 2 slots and 6 capacity
 	fmt.Println(userNames)
@@ -16,11 +16,19 @@ func makeArrays() {
 
 	userNames = append(userNames, "Jesus") // append values
 	fmt.Println(userNames)
+
+	return userNames
 }
 
 func main() {
 	exit := true
-	makeArrays()
+	userNames := makeArrays()
+
+	// for loop for slices (also maps and arrays or any iterable) use "range"
+	for i, v := range userNames {
+		// do something per iteration
+		fmt.Printf("idx: %v, val: %v\n", i, v)
+	}
 
 	if exit {
 		fmt.Printf("\nexiting early\n")
