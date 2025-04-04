@@ -2,9 +2,27 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
+func makeMaps() {
+	courseRatings := make(map[string]float64, 2) // only one addition parameter
+	fmt.Println(courseRatings)
+
+	courseRatings["TypeScript"] = 5.9
+	courseRatings["Vue"] = 5.9
+
+	fmt.Println(courseRatings)
+}
+
 func main() {
+	exit := true
+	makeMaps()
+
+	if exit {
+		fmt.Printf("\nexiting early\n")
+		os.Exit(0)
+	}
 	// Maps are key value pairs like pythong's dictionaries
 	emptymap := map[string]string{} // this is an empyty map
 	websites := map[string]string{  // this is a map with values

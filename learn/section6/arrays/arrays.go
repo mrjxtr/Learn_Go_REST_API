@@ -1,8 +1,32 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
+
+func makeArrays() {
+	// Use this if you know in advance how much you will add to the array
+	userNames := make([]string, 2, 6) // creates a slice with 2 slots and 6 capacity
+	fmt.Println(userNames)
+
+	userNames[0] = "Jester" // assign values to existing slots
+	userNames[1] = "Sione"
+	fmt.Println(userNames)
+
+	userNames = append(userNames, "Jesus") // append values
+	fmt.Println(userNames)
+}
 
 func main() {
+	exit := true
+	makeArrays()
+
+	if exit {
+		fmt.Printf("\nexiting early\n")
+		os.Exit(0)
+	}
+
 	// arrays are collection of data with the same type i.e different numbers
 	var emptyArray [4]string    // creating an empty string
 	emptyArray[2] = "Something" // adding a value to a specific index of an array
