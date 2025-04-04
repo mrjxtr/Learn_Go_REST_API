@@ -19,10 +19,21 @@ func dynamicSlice() {
 	fmt.Println(exampleSlice, updatedleSlice)
 }
 
+func appendingSlices() {
+	slice := []int{1, 2, 3, 4, 5, 6}
+	newSlice := append(slice, 5, 1, 23, 56123)
+
+	anotherSlice := []int{12436, 34568, 12354}
+	newSlice = append(newSlice, anotherSlice...) // use "..." to unpack list values
+
+	fmt.Println(newSlice)
+}
+
 func main() {
 	exitEarly := true
 
 	dynamicSlice()
+	appendingSlices()
 
 	// comment this to run all code bellow
 	if exitEarly {
