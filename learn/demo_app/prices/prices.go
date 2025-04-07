@@ -1,8 +1,14 @@
 package prices
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
 
-type PricesMap map[string]float64
+	"github.com/mrjxtr/price-calc/conversion"
+)
+
+type PricesMap map[string]string
 
 type TaxIncludedPriceJob struct {
 	TaxRate     float64
@@ -13,15 +19,51 @@ type TaxIncludedPriceJob struct {
 func NewTaxIncludedPriceJob(taxRate float64) *TaxIncludedPriceJob {
 	return &TaxIncludedPriceJob{
 		TaxRate:     taxRate,
-		InputPrices: []float64{10.0, 20.0, 30.0},
+		InputPrices: []float64{},
 	}
 }
 
+func (job *TaxIncludedPriceJob) LoadData() {
+	var lines []string
+
+	file, err := os.Open("prices.txt")
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
+
+	s := bufio.NewScanner(file)
+
+	for s.Scan() {
+		lines = append(lines, s.Text())
+	}
+
+	err = s.Err()
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		file.Close()
+		return
+	}
+
+	prices, err := conversion.StrsToFloats(lines)
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		file.Close()
+		return
+	}
+
+	job.InputPrices = prices
+	file.Close()
+}
+
 func (job *TaxIncludedPriceJob) Process() {
+	job.LoadData()
 	result := make(PricesMap)
 
 	for _, price := range job.InputPrices {
-		result[fmt.Sprintf("%.2f", price)] = price * (1 + job.TaxRate)
+		TaxIncludedPrice := price * (1 + job.TaxRate)
+
+		result[fmt.Sprintf("%.2f", price)] = fmt.Sprintf("%.2f", TaxIncludedPrice)
 	}
 
 	fmt.Println(result)
