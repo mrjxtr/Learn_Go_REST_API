@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Recursion is just a fucntion that calls itself
 func main() {
 	result := factorial(5)
 	fmt.Println(result)
